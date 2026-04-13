@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seismograph — Monitor Gempa Indonesia</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+nav {
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #222;
+  background: #0d0d0d;
+}
+.nav-brand { font-size: 1.1rem; font-weight: 700; color: #fff; letter-spacing: 1px; }
+.nav-login {
+  color: #aaa;
+  text-decoration: none;
+  font-size: .9rem;
+  border: 1px solid #333;
+  padding: 7px 18px;
+  border-radius: 4px;
+  transition: all .2s;
+}
+.nav-login:hover { color: #fff; border-color: #555; }
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+}
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.hero h1 span { color: #4da6ff; }
+.hero p {
+  font-size: 1rem;
+  color: #888;
+  max-width: 500px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+.btn {
+  display: inline-block;
+  background: #4da6ff;
+  color: #000;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 14px 36px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background .2s;
+}
+.btn:hover { background: #70b8ff; }
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  max-width: 800px;
+  margin: 60px auto 0;
+  padding: 0 24px;
+}
+.feat {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+.feat h3 { font-size: .95rem; color: #fff; margin-bottom: 8px; }
+.feat p { font-size: .8rem; color: #666; line-height: 1.6; }
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: .75rem;
+  color: #444;
+  border-top: 1px solid #1a1a1a;
+  margin-top: 60px;
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand">Seismograph</div>
+  <a href="/login" class="nav-login">Login</a>
+</nav>
+<section class="hero">
+  <h1>Monitor Gempa <span>Real-Time</span> Indonesia</h1>
+  <p>Data gempa dari BMKG diperbarui otomatis setiap 60 detik. Pantau aktivitas seismik seluruh Indonesia langsung dari dashboard.</p>
+  <a href="/login" class="btn">Masuk ke Dashboard</a>
+  <div class="features">
+    <div class="feat"><h3>Peta Epicentrum</h3><p>Visualisasi titik gempa di peta interaktif Indonesia</p></div>
+    <div class="feat"><h3>Analisis Magnitudo</h3><p>Grafik distribusi dan histori kekuatan gempa</p></div>
+    <div class="feat"><h3>Notifikasi WhatsApp</h3><p>Laporan gempa dikirim otomatis via WhatsApp</p></div>
+    <div class="feat"><h3>Akses Aman</h3><p>Login terproteksi standar keamanan OWASP</p></div>
+  </div>
+</section>
+<footer>Data dari BMKG &mdash; Jenkins CI/CD &mdash; &copy; 2025</footer>
+</body>
+</html>

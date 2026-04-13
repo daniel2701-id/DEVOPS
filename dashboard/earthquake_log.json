@@ -1,0 +1,44 @@
+{
+  "earthquakes": [
+    {
+      "timestamp_key": "31 Mar 2026_11:55:21 WIB",
+      "tanggal": "31 Mar 2026",
+      "jam": "11:55:21 WIB",
+      "magnitude": "2.9",
+      "lokasi": "Pusat gempa berada di darat 18 km Barat Daya Teluk Wondama",
+      "kedalaman": "7 km",
+      "koordinat": "-2.84,134.40",
+      "lat": "-2.84",
+      "lon": "134.40",
+      "dirasakan": "II-III Kab. Teluk Wondama",
+      "potensi": "Gempa ini dirasakan untuk diteruskan pada masyarakat"
+    },
+    {
+      "timestamp_key": "26 Mar 2026_11:39:49 WIB",
+      "tanggal": "26 Mar 2026",
+      "jam": "11:39:49 WIB",
+      "magnitude": "4.9",
+      "lokasi": "Pusat gempa berada di laut 61 km timur laut Konawe Kepulauan",
+      "kedalaman": "10 km",
+      "koordinat": "-3.72,123.44",
+      "lat": "-3.72",
+      "lon": "123.44",
+      "dirasakan": "IV Konawe Kepulauan, III Konawe Selatan, III Kendari",
+      "potensi": "Gempa ini dirasakan untuk diteruskan pada masyarakat"
+    },
+    {
+      "timestamp_key": "25 Mar 2026_13:36:52 WIB",
+      "tanggal": "25 Mar 2026",
+      "jam": "13:36:52 WIB",
+      "magnitude": "2.5",
+      "lokasi": "Pusat gempa berada di darat 5 Km Barat daya Kota Metro",
+      "kedalaman": "10 km",
+      "koordinat": "-5.15,105.30",
+      "lat": "-5.15",
+      "lon": "105.30",
+      "dirasakan": "II Metro",
+      "potensi": "Gempa ini dirasakan untuk diteruskan pada masyarakat"
+    }
+  ],
+  "last_updated": "2026-03-31T12:38:03+00:00"
+}

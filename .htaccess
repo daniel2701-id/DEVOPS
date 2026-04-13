@@ -1,0 +1,14 @@
+# === Security Headers ===
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "DENY"
+Header always set X-XSS-Protection "1; mode=block"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+
+# HSTS — aktifkan hanya jika SSL sudah aktif di server
+# Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+# CSP — izinkan CDN Leaflet + ChartJS yang dipakai dashboard
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https://*.basemaps.cartocdn.com https://*.tile.openstreetmap.org; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+
+RewriteEngine On

@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@200;300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f5f0eb;
+  --surface: #faf7f4;
+  --text-primary: #1a1714;
+  --text-secondary: #7a6e65;
+  --accent: #c8a882;
+  --border: rgba(200, 168, 130, 0.25);
+  --shadow: 0 2px 40px rgba(30, 20, 10, 0.08);
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Jost', sans-serif;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(200, 168, 130, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 90%, rgba(180, 140, 100, 0.1) 0%, transparent 55%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+}
+
+.card {
+  background: var(--surface);
+  padding: 64px 72px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+  animation: reveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Subtle corner ornament */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* Thin top accent line */
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  animation: fadeUp 0.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 2.8rem;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  animation: fadeUp 0.8s 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.divider {
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+  margin: 0 auto 16px;
+  animation: expand 0.6s 0.6s ease both;
+}
+
+p {
+  font-family: 'Jost', sans-serif;
+  font-weight: 200;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  animation: fadeUp 0.8s 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expand {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 32px;
+    opacity: 1;
+  }
+}
