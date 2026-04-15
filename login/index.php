@@ -25,81 +25,12 @@ $timeoutMsg = ($_GET['msg'] ?? '') === 'timeout' ? 'Sesi kamu sudah berakhir. Si
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login — Seismograph</title>
-<style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  background: #0a0a0a;
-  color: #e0e0e0;
-  font-family: 'Segoe UI', sans-serif;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-.wrap { width: 100%; max-width: 420px; }
-.brand { text-align: center; margin-bottom: 24px; }
-.brand h1 { font-size: 1.4rem; color: #fff; font-weight: 700; }
-.brand p { font-size: .8rem; color: #555; margin-top: 4px; }
-.card { background: #111; border: 1px solid #222; border-radius: 10px; overflow: hidden; }
-.tabs { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid #222; }
-.tab {
-  padding: 14px;
-  text-align: center;
-  font-size: .85rem;
-  color: #666;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  transition: all .2s;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-}
-.tab.active { color: #4da6ff; border-bottom-color: #4da6ff; background: rgba(77,166,255,.04); }
-.tab-body { display: none; padding: 24px; }
-.tab-body.active { display: block; }
-.form-group { margin-bottom: 16px; }
-label { display: block; font-size: .78rem; color: #888; margin-bottom: 6px; }
-input[type=text], input[type=email], input[type=password] {
-  width: 100%;
-  background: #0d0d0d;
-  border: 1px solid #2a2a2a;
-  border-radius: 5px;
-  padding: 10px 12px;
-  color: #e0e0e0;
-  font-size: .95rem;
-  outline: none;
-  transition: border-color .2s;
-}
-input:focus { border-color: #4da6ff; }
-input::placeholder { color: #444; }
-.btn-submit {
-  width: 100%;
-  padding: 11px;
-  background: #4da6ff;
-  color: #000;
-  font-weight: 700;
-  font-size: .95rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 6px;
-  transition: background .2s;
-}
-.btn-submit:hover { background: #70b8ff; }
-.alert { border-radius: 5px; padding: 10px 12px; margin-bottom: 16px; font-size: .8rem; }
-.alert-error { background: rgba(255,80,80,.1); border: 1px solid rgba(255,80,80,.3); color: #ff9090; }
-.alert-success { background: rgba(80,200,80,.1); border: 1px solid rgba(80,200,80,.3); color: #90e090; }
-.alert-warning { background: rgba(255,200,80,.1); border: 1px solid rgba(255,200,80,.3); color: #ffe090; }
-.hint { font-size: .72rem; color: #555; margin-top: 5px; }
-.back { text-align: center; margin-top: 16px; }
-.back a { font-size: .78rem; color: #555; text-decoration: none; }
-.back a:hover { color: #aaa; }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="wrap">
   <div class="brand">
+    <div class="brand-icon">🌏</div>
     <h1>Seismograph</h1>
     <p>Earthquake Monitoring System</p>
   </div>
@@ -109,6 +40,7 @@ input::placeholder { color: #444; }
       <button class="tab <?= $activeTab==='register'?'active':'' ?>" onclick="switchTab('register',this)">Daftar</button>
     </div>
 
+    <!-- TAB LOGIN -->
     <div class="tab-body <?= $activeTab==='login'?'active':'' ?>" id="tab-login">
       <?php if($timeoutMsg):?><div class="alert alert-warning"><?= e($timeoutMsg) ?></div><?php endif;?>
       <?php if($errorMsg && $activeTab==='login'):?><div class="alert alert-error"><?= e($errorMsg) ?></div><?php endif;?>
@@ -121,12 +53,18 @@ input::placeholder { color: #444; }
         </div>
         <div class="form-group">
           <label>Password</label>
-          <input type="password" name="password" placeholder="Password" required maxlength="128">
+          <div class="password-wrapper">
+            <input type="password" name="password" id="pw-login" placeholder="Password" required maxlength="128">
+            <button type="button" class="toggle-pw" onclick="togglePassword('pw-login', this)" aria-label="Tampilkan password">
+              👁
+            </button>
+          </div>
         </div>
         <button type="submit" class="btn-submit">Masuk</button>
       </form>
     </div>
 
+    <!-- TAB REGISTER -->
     <div class="tab-body <?= $activeTab==='register'?'active':'' ?>" id="tab-register">
       <?php if($errorMsg && $activeTab==='register'):?><div class="alert alert-error"><?= e($errorMsg) ?></div><?php endif;?>
       <form action="/auth/register.php" method="POST">
@@ -146,18 +84,28 @@ input::placeholder { color: #444; }
         </div>
         <div class="form-group">
           <label>Password</label>
-          <input type="password" name="password" placeholder="Password" required maxlength="128">
+          <div class="password-wrapper">
+            <input type="password" name="password" id="pw-reg" placeholder="Password" required maxlength="128">
+            <button type="button" class="toggle-pw" onclick="togglePassword('pw-reg', this)" aria-label="Tampilkan password">
+              👁
+            </button>
+          </div>
           <div class="hint">Min 8 karakter, huruf besar/kecil, angka, simbol</div>
         </div>
         <div class="form-group">
           <label>Konfirmasi Password</label>
-          <input type="password" name="confirm_password" placeholder="Ulangi password" required maxlength="128">
+          <div class="password-wrapper">
+            <input type="password" name="confirm_password" id="pw-confirm" placeholder="Ulangi password" required maxlength="128">
+            <button type="button" class="toggle-pw" onclick="togglePassword('pw-confirm', this)" aria-label="Tampilkan password">
+              👁
+            </button>
+          </div>
         </div>
         <button type="submit" class="btn-submit">Daftar</button>
       </form>
     </div>
   </div>
-  <div class="back"><a href="/start">Kembali ke Beranda</a></div>
+  <div class="back"><a href="/start">← Kembali ke Beranda</a></div>
 </div>
 <script>
 function switchTab(tab, btn) {
@@ -165,6 +113,13 @@ function switchTab(tab, btn) {
   document.querySelectorAll('.tab-body').forEach(c => c.classList.remove('active'));
   document.getElementById('tab-' + tab).classList.add('active');
   btn.classList.add('active');
+}
+
+function togglePassword(inputId, btn) {
+  const input = document.getElementById(inputId);
+  const isHidden = input.type === 'password';
+  input.type = isHidden ? 'text' : 'password';
+  btn.textContent = isHidden ? '🙈' : '👁';
 }
 </script>
 </body>
